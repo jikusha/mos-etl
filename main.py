@@ -44,11 +44,17 @@ l=[(278817, 'H84632', ts), (288023, 'H67865', ts), (288123, 'H78654', ts),
 #
 # my_cursor.executemany(query, l)
 
-query = """
-            INSERT INTO call_agent_mapping values(%s, %s, %s)
-        """
+# query = """
+#             INSERT INTO call_agent_mapping values(%s, %s, %s)
+#         """
 
-my_cursor.executemany(query, l)
-conn.commit()
+query = "select * from call_agent_mapping"
+#
+# my_cursor.executemany(query, l)
 
-print(my_cursor.rowcount, " was inserted")
+my_cursor.execute(query)
+result = my_cursor.fetchall()
+print(result)
+# conn.commit()
+
+# print(my_cursor.rowcount, " was inserted")
